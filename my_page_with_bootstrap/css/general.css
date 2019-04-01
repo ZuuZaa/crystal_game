@@ -1,0 +1,79 @@
+body { 
+    background: url("https://t4.ftcdn.net/jpg/01/36/49/73/240_F_136497356_1ZtIi8FfqRS1yNQYsaTVnzJYTWfgTEAL.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+#header .container-fluid {
+     background-color: rgb(212, 221, 212);
+     border-bottom: 3px solid  rgb(28, 90, 79);
+     position: fixed;
+     width: 100%;
+     z-index: 5;
+}
+#header .title {
+    background-color: rgb(67, 139, 123);
+    padding: 15px 90px;
+    margin-left: 140px;
+    color:rgb(212, 221, 212);
+    font-size: 30px;
+}
+#header .navbar-right{
+    margin-right: 140px;
+}
+#header .navbar-right-element {
+    color: rgb(67, 139, 123);
+}  
+#header .navbar-right-element::before {
+    content: "|";
+    color: rgb(67, 139, 123);
+    padding-right: 15px;
+    
+}                      
+#content .container {
+
+    width: 970px;
+    margin: 0 auto;
+}
+#content .left-block {
+    background-color: rgb(212, 221, 212);
+    padding: 17px;
+    margin-bottom: 170px;
+}
+#content .left-block h1 {
+    color: rgb(67, 139, 123);
+    border-bottom: 3px solid rgb(28, 90, 79);
+}
+#content .right-block{
+    background-color: rgb(212, 221, 212);
+    padding: 17px;
+    margin-bottom: 17px;
+}
+#content .contack-logo-github {
+    font-size: 40px;
+    color: black;
+}
+#content .contact-logo-linkedin {
+    font-size: 40px;
+    color: blue;
+}
+#content .contact-logo-stackoverflow {
+    font-size: 40px;
+    color: rgb(236, 176, 48);
+}
+
+#content .right-block h1 {
+    color: rgb(67, 139, 123);
+    border-bottom: 1px solid rgb(28, 90, 79);
+}
+#footer {
+    background-color:  rgb(67, 139, 123);
+    height: 60px;
+    padding: 10px;
+    border-top: 5px solid rgb(28, 90, 79);
+    text-align: center;
+    color:  rgb(212, 221, 212);
+}
+

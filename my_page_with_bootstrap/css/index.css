@@ -1,0 +1,10 @@
+#content p {
+    font-family: 'Source Sans Pro', sans-serif;
+    color: rgb(84, 90, 84);
+    line-height: 1.8em;
+}
+#content img {
+    width: 33%;
+    float: left;
+    margin-right: 17px;
+}

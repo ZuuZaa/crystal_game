@@ -1,0 +1,16 @@
+.img-container {
+    position: relative;
+}
+img {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top:10px
+}
+h3 {
+    position: absolute;
+    color: aliceblue;
+    background-color: rgb(49, 155, 165);
+    padding: 5px 110px;
+    text-align: center;
+    margin-top: 150px;
+}
