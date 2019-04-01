@@ -1,64 +1,98 @@
 class Fighter {
-    constructor(h, a, d) {
+    constructor(n, h, a, d) {
+        this.name = n
         this.health = h
         this.attack = a
         this.damage = d
+        this.power = a
     }
-    
-    fight() {
-        var enemylife = enemy.health -= this.attack
-        var yourlife = this.health -= enemy.damage
-        
-        if (yourlife <= 0) {
-            $("footer .score").html("OUCH!!! YOU LOOSE :(")
-            $(".restart img").attr("src", "http://www.clker.com/cliparts/2/0/B/d/D/v/button-reset-hi.png")
-        }
-        if (enemylife <= 0) {
 
-            $("footer .score").html("YAHOOO! YOU WIN :)")
-            $(".restart img").attr("src", "http://www.clker.com/cliparts/2/0/B/d/D/v/button-reset-hi.png")
+    fight() {
+
+        if (enemy.health > 0 && this.health > 0) {
+            var enemylife = enemy.health -= this.power
+            var yourlife = this.health -= enemy.damage
+            $(".you .life").html(yourlife)
+            $(".enemy .life").html(enemylife)
+            var dam = enemy.damage
+            $(".s1").html(" You    atacked    " + enemy.name + "    for   ")
+            $(".s2").html(this.power)
+            $(".s3").html("    damage")
+            this.power += this.attack
+
+            $(".ss1").html(enemy.name + "  atacked   you   for  ")
+            $(".ss2").html(dam)
+            $(".ss3").html("     damage")
+            $("footer .score").html(" ")
+
+            if (yourlife <= 0 && enemylife > 0) {
+                $(".s1").html(" ")
+                $(".s2").html(" ")
+                $(".s3").html(" ")
+                $(".ss1").html(" ")
+                $(".ss2").html(" ")
+                $(".ss3").html(" ")
+
+                $("footer .score").html("OUCH!!! YOU LOOSE :(")
+                $(".restart img").attr("src", "http://www.clker.com/cliparts/2/0/B/d/D/v/button-reset-hi.png")
+                reset()
+            } else if (yourlife > 0 && enemylife <= 0) {
+                $(".s1").html(" ")
+                $(".s2").html(" ")
+                $(".s3").html(" ")
+                $(".ss1").html(" ")
+                $(".ss2").html(" ")
+                $(".ss3").html(" ")
+
+                $("footer .score").html("YAHOOO! YOU WIN :)")
+                $(".enemy .character").removeClass("character")
+                $(".enemy .character").addClass("looser")
+                $(".your-characters").append($(".enemy .character"))
+                $(".enemy").empty()
+                if ($(".your-characters").html() == 0) {
+                    $(".restart img").attr("src", "http://www.clker.com/cliparts/2/0/B/d/D/v/button-reset-hi.png")
+                    $(".button img").hide()
+
+                }
+
+            }
+
         }
-        $(".you .life").html(yourlife)
-        $(".enemy .life").html(enemylife)
-        var att = this.attack
-        var dam = enemy.damage
-        $(".s1").html(" You  atacked   " + enemy + "   for  ")
-        $(".s2").html(att)
-        $(".s3").html("   damage")
-        att = att + this.attack.
-        $(".ss1").html(enemy + "atacked" + $(this).attr("id") + "for")
-        $(".ss2").html(dam)
-        $(".ss3").html("damage")
-        
-       }
+
     }
+    reset() {
+        location.reload();
+    }
+
+}
+
+
 
 var players = {
 
-    RYU: new Fighter(120, 10, 8),
+    RYU: new Fighter("RYU", 120, 10, 8),
 
-    DHALSIM: new Fighter(100, 8, 10),
+    DHALSIM: new Fighter("DHALSIM", 100, 8, 10),
 
-    CHUNLI: new Fighter(170, 22, 25),
+    CHUNLI: new Fighter("CHUNLI", 170, 22, 25),
 
-    GUIDE: new Fighter(150, 25, 22),
+    GUIDE: new Fighter("GUIDE", 150, 25, 22),
 }
-console.log(players)
 $(".character").on("click", function () {
     if ($(".you").is(":empty")) {
         $(".you").append($(this))
+        $(".you .character").addClass("me")
         obj = $(this).attr("id")
         you = players[$(this).attr("id")]
-        console.log(you)
         $("#head-tytle").html("CHOOSE ENEMY TO FIGHT")
 
 
     } else if ($(".enemy").is(":empty")) {
-        $(".enemy").append($(this))
-        $(".button img").attr("src", "https://cdn131.picsart.com/270423334002211.png?r240x240")
-        enemy = players[$(this).attr("id")]
-        console.log(enemy)
-
+        if (!$(".your-characters .character").hasClass("me")) {
+            $(".enemy").append($(this))
+            $(".button img").attr("src", "https://cdn131.picsart.com/270423334002211.png?r240x240")
+            enemy = players[$(this).attr("id")]
+        }
     }
 })
 
@@ -67,6 +101,12 @@ $(".button").on("click", function () {
 
 })
 
+
+
+
+$(".restart img").on("click", function () {
+    players.RYU.reset()
+})
 
 
 
